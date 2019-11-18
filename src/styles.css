@@ -1,5 +1,20 @@
 body {
     padding: 0;
     margin: 0;
-    background-image: linear-gradient(to right, gray, rgb(173, 173, 173), gray);
+    background: rgb(91, 80, 80) url(./resources/fire_bot_border.jpg) center fixed no-repeat;
+    background-size: cover;
+    /* background-image: linear-gradient(to right, gray, rgb(173, 173, 173), gray); */
+    background-color: rgb(91, 80, 80);
+}
+
+@font-face {
+    font-family: 'die nasty';
+    src: url('./assets/dienasty.ttf');
+}
+
+.die-nasty {
+    font-size: 3.5em;
+    font-family: 'die nasty', monospace;
+    color: white;
+    padding: 5%;
 }
