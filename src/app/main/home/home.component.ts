@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IImage } from 'ng-simple-slideshow';
 
 @Component({
   selector: 'app-home',
@@ -6,41 +7,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  // slideIndex = 1;
+  imageSources: (string | IImage)[] = [
+    // '../../../resources/skull_drawn.jpg',
+    // '../../../resources/skull_vector.jpg',
+    // '../../../resources/small_skull_drawn.jpg'
+    {
+      url:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQZ6XNJwdKW520Q7vK9Ko03PMt3Ji3_wXEVe9gYHMTUg_29zjqgQ&s',
+      caption: 'first'
+    },
+    {
+      url:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvbL7Ouz4-SvFPVU96MaI0tjGH04CnNRJb6rSejGcZjD-cpqpi&s',
+      clickAction: () => alert('custom click function')
+    },
+    {
+      url:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeXRDiVts2fG8JaheGtGntudwk2HLqIaWouW9mKnaz0tRNmrmXVQ&s',
+      caption: 'Fapple TV',
+      href: 'https://www.apple.com/'
+    }
+  ];
+  autoPlayInterval = 5000;
 
   constructor() {}
 
   ngOnInit() {
-    // this.showSlides(this.slideIndex);
   }
-
-  // // Next/previous controls
-  // plusSlides(n) {
-  //   this.showSlides((this.slideIndex += n));
-  // }
-
-  // // Thumbnail image controls
-  // currentSlide(n) {
-  //   this.showSlides((this.slideIndex = n));
-  // }
-
-  // showSlides(n: number) {
-  //   let i: number;
-  //   const slides = document.getElementsByClassName('mySlides');
-  //   const dots = document.getElementsByClassName('dot');
-  //   if (n > slides.length) {
-  //     this.slideIndex = 1;
-  //   }
-  //   if (n < 1) {
-  //     this.slideIndex = slides.length;
-  //   }
-  //   for (i = 0; i < slides.length; i++) {
-  //     slides[i].style.display = 'none';
-  //   }
-  //   for (i = 0; i < dots.length; i++) {
-  //     dots[i].className = dots[i].className.replace(' active', '');
-  //   }
-  //   slides[this.slideIndex - 1].style.display = 'block';
-  //   dots[this.slideIndex - 1].className += ' active';
-  // }
 }

@@ -1,0 +1,9 @@
+slideshow {
+    position: absolute;
+    top: 40vh;
+    left: -2px;
+    margin: auto;
+    border: solid 2px violet;
+    width: 100vw;
+    height: 200px;
+}
