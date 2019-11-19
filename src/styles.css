@@ -45,4 +45,22 @@ body {
     margin: auto;
     padding: 0 1vw;
     cursor: pointer;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: whitesmoke;
+    text-decoration: underline;
+}
+
+.link:visited {
+    color: whitesmoke;
+}
+
+.link:active {
+    color: wheat;
+}
+
+p {
+    color: whitesmoke;
 }
