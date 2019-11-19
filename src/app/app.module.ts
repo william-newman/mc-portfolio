@@ -8,6 +8,8 @@ import { BioComponent } from './main/bio/bio.component';
 import { HomeComponent } from './main/home/home.component';
 import { ContactComponent } from './main/contact/contact.component';
 import { AppRoutingModule } from './app-routing.module';
+import {SlideshowModule} from 'ng-simple-slideshow';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SlideshowModule
   ],
   providers: [],
   bootstrap: [AppComponent]
