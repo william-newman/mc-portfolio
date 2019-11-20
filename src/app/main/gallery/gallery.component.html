@@ -6,7 +6,6 @@
   </div>
 </div>
 <div class="image-modal" *ngIf="showModal" (click)="hideModal()">
-  <div class="modal-image-container">
-    <img class="images-full" src={{modalImage.src}} alt={{modalImage.alt}} title="modalImage.title">
-  </div>
+  <span class="modal-image-container"></span>
+  <img class="images-full" src={{modalImage.src}} alt={{modalImage.alt}} title={{modalImage.title}}>
 </div>
