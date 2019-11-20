@@ -15,7 +15,11 @@ export class GalleryComponent implements OnInit {
   image4 =
     'https://upload.wikimedia.org/wikipedia/en/thumb/6/6c/ScorpionMKXRender.png/220px-ScorpionMKXRender.png';
   image5 = 'https://i.ytimg.com/vi/Sg0rXa1WnZc/maxresdefault.jpg';
-  modalImage: object;
+  modalImage: {
+    src: '',
+    alt: 'No image found, error',
+    title: 'Default'
+  };
 
   constructor() {
     this.pushImages();
