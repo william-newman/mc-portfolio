@@ -12,26 +12,28 @@ export class HomeComponent implements OnInit {
     // '../../../resources/skull_vector.jpg',
     // '../../../resources/small_skull_drawn.jpg'
     {
-      url:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQZ6XNJwdKW520Q7vK9Ko03PMt3Ji3_wXEVe9gYHMTUg_29zjqgQ&s',
-      caption: 'first'
+      url: 'https://cdn-prod.mortalkombat.com/features/scorpion-bg.jpg',
+      caption: 'Picture with caption',
+      title: 'Picture title goes here'
+    },
+    {
+      url: 'https://i.ytimg.com/vi/z_N2gPZKYIE/maxresdefault.jpg',
+      clickAction: () => alert('picture clicked, function performed'),
+      title: 'Cool sample picture #2'
     },
     {
       url:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvbL7Ouz4-SvFPVU96MaI0tjGH04CnNRJb6rSejGcZjD-cpqpi&s',
-      clickAction: () => alert('custom click function')
-    },
-    {
-      url:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeXRDiVts2fG8JaheGtGntudwk2HLqIaWouW9mKnaz0tRNmrmXVQ&s',
-      caption: 'Fapple TV',
-      href: 'https://www.apple.com/'
+        'https://www.syfy.com/sites/syfy/files/styles/1200x680/public/2019/01/mortal_kombat_11_via_official_youtube_trailer_2019.png',
+      caption: 'Clickable link',
+      href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      title: 'hehe'
     }
   ];
   autoPlayInterval = 5000;
+  captionColor = 'whitesmoke';
+  captionBackground = 'rgba(0, 0, 0, .35)';
 
   constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }
