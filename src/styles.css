@@ -41,9 +41,12 @@ body {
     width: 30vw;
 }
 
+.pad {
+    padding: 0 1vw;
+}
+
 .link {
     margin: auto;
-    padding: 0 1vw;
     cursor: pointer;
     text-decoration: none;
 }

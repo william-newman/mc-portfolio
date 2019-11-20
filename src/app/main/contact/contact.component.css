@@ -1,0 +1,16 @@
+.contact-container {
+    position: fixed;
+    top: 30vh;
+    left: 30vw;
+}
+
+.contact {
+    list-style: none;
+    font-family: fantasy;
+    color: whitesmoke;
+    font-size: 2em;
+}
+
+.link-fix {
+    color: whitesmoke;
+}
