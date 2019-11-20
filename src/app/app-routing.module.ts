@@ -7,7 +7,7 @@ import { BioComponent } from './main/bio/bio.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomeComponent,
     pathMatch: 'full'
   },
