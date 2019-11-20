@@ -1,1 +1,12 @@
-<p>gallery works!</p>
+<div class="gallery-container">
+  <div class="gallery-photos" *ngFor="let image of imageArr, let i = index">
+    <div class="image-container" (click)="fullSizeImage(i)">
+      <img class="images-g" src={{image.src}} alt={{image.alt}} title={{image.title}} />
+    </div>
+  </div>
+</div>
+<div class="image-modal" *ngIf="showModal" (click)="hideModal()">
+  <div class="modal-image-container">
+    <img class="images-full" src={{modalImage.src}} alt={{modalImage.alt}} title="modalImage.title">
+  </div>
+</div>
