@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+.version-container {
+    position: absolute;
+    top: 20vh;
+    left: 20vw;
+    height: 60vh;
+    width: 60vw;
+    overflow-y: auto;
+    color: whitesmoke;
+    font-family: 'Lato', monospace, sans-serif;
+}
