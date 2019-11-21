@@ -1,3 +1,4 @@
+declare var require: any;
 export const environment = {
   production: true,
   firebase: {
