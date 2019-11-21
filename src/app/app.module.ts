@@ -9,6 +9,7 @@ import { HomeComponent } from './main/home/home.component';
 import { ContactComponent } from './main/contact/contact.component';
 import { AppRoutingModule } from './app-routing.module';
 import {SlideshowModule} from 'ng-simple-slideshow';
+import { VersionComponent } from './main/version/version.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {SlideshowModule} from 'ng-simple-slideshow';
     GalleryComponent,
     BioComponent,
     HomeComponent,
-    ContactComponent
+    ContactComponent,
+    VersionComponent
   ],
   imports: [
     BrowserModule,
