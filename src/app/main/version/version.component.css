@@ -3,10 +3,26 @@
 .version-container {
     position: absolute;
     top: 20vh;
-    left: 20vw;
+    left: 25vw;
     height: 60vh;
-    width: 60vw;
+    width: 50vw;
     overflow-y: auto;
     color: whitesmoke;
     font-family: 'Lato', monospace, sans-serif;
+}
+
+.dev-contact {
+    font-size: 1.4em;
+}
+
+.beauty-btn {
+    background-color: cadetblue;
+    border: solid 1px rgb(0, 113, 100);
+    border-radius: 4px;
+    font-family: monospace, Verdana, Geneva, Tahoma, sans-serif;
+    padding: .5%;
+}
+
+.patch-notes-list {
+    list-style-type: circle;
 }
