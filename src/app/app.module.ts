@@ -10,6 +10,8 @@ import { ContactComponent } from './main/contact/contact.component';
 import { AppRoutingModule } from './app-routing.module';
 import {SlideshowModule} from 'ng-simple-slideshow';
 import { VersionComponent } from './main/version/version.component';
+import { AdminPageComponent } from './auth/admin-page/admin-page.component';
+import { LoginComponent } from './auth/login/login.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { VersionComponent } from './main/version/version.component';
     BioComponent,
     HomeComponent,
     ContactComponent,
-    VersionComponent
+    VersionComponent,
+    AdminPageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

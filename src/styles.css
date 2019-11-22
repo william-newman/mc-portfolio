@@ -1,70 +1,91 @@
 body {
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-    background: rgb(91, 80, 80) url(./resources/fire_bot_border.jpg) center fixed no-repeat;
-    background-size: cover;
-    /* background-image: linear-gradient(to right, gray, rgb(173, 173, 173), gray); */
-    background-color: rgb(91, 80, 80);
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background: rgb(91, 80, 80) url(./resources/fire_bot_border.jpg) center fixed no-repeat;
+  background-size: cover;
+  /* background-image: linear-gradient(to right, gray, rgb(173, 173, 173), gray); */
+  background-color: rgb(91, 80, 80);
 }
 
 @font-face {
-    font-family: 'die nasty';
-    src: url('./assets/dienasty.ttf');
+  font-family: 'die nasty';
+  src: url('./assets/dienasty.ttf');
 }
 
 .die-nasty {
-    font-family: 'die nasty', monospace;
+  font-family: 'die nasty', monospace;
 }
 
 .nav-header {
-    margin: auto;
-    position: absolute;
-    top: 5vh;
-    left: 5vw;
-    font-size: 5em;
-    color: white;
-    text-shadow: 2px 2px 1px tomato;
-    height: 5vh;
-    width: 30vw;
+  margin: auto;
+  position: absolute;
+  top: 5vh;
+  left: 5vw;
+  font-size: 5em;
+  color: white;
+  text-shadow: 2px 2px 1px tomato;
+  height: 5vh;
+  width: 30vw;
 }
 
 .nav-links {
-    margin: auto;
-    position: absolute;
-    top: 5vh;
-    right: 5vw;
-    font-size: 2.5em;
-    color: white;
-    text-shadow: 2px 2px 1px tomato;
-    height: 5vh;
-    width: 30vw;
+  margin: auto;
+  position: absolute;
+  top: 5vh;
+  right: 5vw;
+  font-size: 2.5em;
+  color: white;
+  text-shadow: 2px 2px 1px tomato;
+  height: 5vh;
+  width: 30vw;
 }
 
 .pad {
-    padding: 0 1vw;
+  padding: 0 1vw;
 }
 
 .link {
-    color: whitesmoke;
-    margin: auto;
-    cursor: pointer;
-    text-decoration: none;
+  color: whitesmoke;
+  margin: auto;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .link:hover {
-    color: whitesmoke;
-    text-decoration: underline;
+  color: whitesmoke;
+  text-decoration: underline;
 }
 
 .link:visited {
-    color: whitesmoke;
+  color: whitesmoke;
 }
 
 .link:active {
-    color: wheat;
+  color: wheat;
 }
 
 p {
-    color: whitesmoke;
+  color: whitesmoke;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f12f;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

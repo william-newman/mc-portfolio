@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./version.component.css']
 })
 export class VersionComponent implements OnInit {
+  loginModal = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  loginModalShow() {
+    this.loginModal = true;
+  }
+
+  loginModalhide() {
+    this.loginModal = false;
   }
 
 }

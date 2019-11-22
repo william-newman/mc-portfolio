@@ -5,12 +5,34 @@
       <a class="link" href="mailto:billycoda@killerkuff.com">billycoda@killerkuff.com</a>
     </button>
   </div>
+  <div class="admin-access">
+    Admin access:
+    <button class="beauty-btn" (click)="loginModalShow()">
+      <a class="link">LOGIN</a>
+    </button>
+  </div>
+  <div *ngIf="loginModal" class="login-modal">
+    <app-login></app-login>
+  </div>
   <br />
   <div class="patch-notes">
     <div class="header">
       Version Notes
     </div>
     <hr />
+    <!-- patch divider -->
+    <br />
+    <div class="patch-number">
+      V1.1.0
+    </div>
+    <ul class="patch-notes-list">
+      <li>
+        Site now hosted at 'https://killerkuff.com'
+      </li>
+      <li>
+        Support email implemented and live
+      </li>
+    </ul>
     <!-- patch divider -->
     <br />
     <div class="patch-number">
@@ -36,19 +58,19 @@
         Patch notes implemented
       </li>
     </ul>
-    <br />
     <!-- patchouli dividisimo -->
+    <br />
     <div class="patch-number">
       Candidates for future implementation
     </div>
     <ul class="patch-notes-list">
-      <li>
+      <li class="strikeout">
         Site will be migrated to 'http://killerkuff.com'
       </li>
       <li>
-        Marketplace integration
+        Marketplace integration/creation
       </li>
-      <li>
+      <li class="strikeout">
         Support email and email routing
       </li>
       <li>
@@ -56,6 +78,12 @@
       </li>
       <li>
         Style details
+      </li>
+      <li>
+        Mobile version
+      </li>
+      <li>
+        Administration page and authentication/authorization and upload functionality
       </li>
     </ul>
   </div>
