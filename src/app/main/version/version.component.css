@@ -49,13 +49,15 @@
     left: 25%;
     width: 50%;
     max-height: 60%;
-    background-color: cornflowerblue;
+    background-color: rgba(31, 36, 46, 0.4);
+    padding: 2% 0;
     z-index: 6;
 }
 
 .input {
     border: none;
-    background-color: coral;
+    background-color: rgb(65, 48, 48);
+    color: cornsilk;
     padding: 1%;
     font-size: 2em;
     margin: 1%;

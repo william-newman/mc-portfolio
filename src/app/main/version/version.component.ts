@@ -21,4 +21,12 @@ export class VersionComponent implements OnInit {
     this.loginModal = false;
   }
 
+  badTouch(event: MouseEvent) {
+    event.stopPropagation();
+  }
+
+  tryLogin() {
+    // try login and redirect with authguard activated
+  }
+
 }
