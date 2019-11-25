@@ -11,9 +11,20 @@
       <a class="link">LOGIN</a>
     </button>
   </div>
+
   <div *ngIf="loginModal" class="login-modal">
-    <app-login></app-login>
+    <div class="login-container" (click)="loginModalHide()">
+      <div class="login-box">
+        <div class="input-box">
+          <input type="username" class="input username" />
+        </div>
+        <div class="input-box">
+          <input type="password" class="input password" />
+        </div>
+      </div>
+    </div>
   </div>
+
   <br />
   <div class="patch-notes">
     <div class="header">
