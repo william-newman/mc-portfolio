@@ -7,30 +7,50 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
   styleUrls: ['./admin-page.component.css']
 })
 export class AdminPageComponent implements OnInit {
-  selectedFile: File = null;
+  selectedImages: File[] = [];
+  imageNames: string[] = [];
+  selectorClicked = false;
+  select = 'Select';
+  notAnImageMsg: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  fileSelected(event) {
-    this.selectedFile = event.target.files[0] as File;
+  onFileSelect(event) {
+    this.imageNames = [];
+    this.select = 'Reselect';
+    this.selectorClicked = true;
+
+    const imageFiles = event.target.files as File[];
+    const imageRegex = /^image\//;
+
+    for (const image of imageFiles) {
+      if (image.type.match(imageRegex)) {
+        // this.imageNames.push(image.name);
+        this.selectedImages.push(image);
+      } else {
+        this.notAnImageMsg = 'One or more files were omitted due to unsupported format. Image files only.';
+      }
+    }
+    console.log(imageFiles);
   }
 
   sendImages() {
-    const formData = new FormData();
-    formData.append('image', this.selectedFile, this.selectedFile.name);
-    this.http.post('url', formData, {
-      reportProgress: true,
-      observe: 'events'
-    })
-    .subscribe(event => {
-      if (event.type === HttpEventType.UploadProgress) {
-        console.log('Upload Progress: ' + Math.round(event.loaded / event.total * 100) + '%');
-      } else if (event.type === HttpEventType.Response) {
-        console.log(event);
-      }
-    });
+    console.log(this.selectedImages);
+
+    //   const formData = new FormData();
+    //   formData.append('image', this.selectedImages, this.selectedImages.name);
+    //   this.http.post('url', formData, {
+    //     reportProgress: true,
+    //     observe: 'events'
+    //   })
+    //   .subscribe(event => {
+    //     if (event.type === HttpEventType.UploadProgress) {
+    //       console.log('Upload Progress: ' + Math.round(event.loaded / event.total * 100) + '%');
+    //     } else if (event.type === HttpEventType.Response) {
+    //       console.log(event);
+    //     }
+    //   });
   }
 }

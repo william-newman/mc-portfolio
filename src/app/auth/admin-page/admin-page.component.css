@@ -1,3 +1,17 @@
 .admin-container {
     color: cornsilk;
+    position: absolute;
+    top: 30vh;
+    left: 35vw;
+    height: 60vh;
+    width: 30vw;
+}
+
+#image-selector {
+    display: none;
+}
+
+.btn {
+    padding: 1%;
+    margin: 1%;
 }

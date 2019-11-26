@@ -2,9 +2,20 @@
   <div class="header">
     Admin Settings
   </div>
+  <br />
   <div class="image-upload">
-    <input type="file" name="images" class="file-select" (change)="fileSelected($event)" #fileInput />
-    <button type="button" (click)="fileInput.click()">Pick File</button>
-    <button class="upload-btn" (click)="sendImages()">Upload Image(s)</button>
+    <input type="file" name="image-selector" id="image-selector" multiple accept="image/*"
+      (change)="onFileSelect($event)" #fileInput />
+    <button type="button" (click)="fileInput.click()" class="select-btn btn">{{ select }} Image(s) to Upload</button>
+    <br />
+    <br />
+    <div class="list-container" *ngIf="selectorClicked">
+      Images to Upload
+      <ul class="image-list" *ngFor="let image of selectedImages">
+        <li class="image-name">{{ image.name }}</li>
+      </ul>
+      <div class="warning-unsupported">{{ notAnImageMsg }}</div>
+      <button class="upload-btn btn" (click)="sendImages()">Upload Image(s)</button>
+    </div>
   </div>
 </div>
