@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {SlideshowModule} from 'ng-simple-slideshow';
 import { VersionComponent } from './main/version/version.component';
 import { AdminPageComponent } from './auth/admin-page/admin-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { AdminPageComponent } from './auth/admin-page/admin-page.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SlideshowModule
+    SlideshowModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
