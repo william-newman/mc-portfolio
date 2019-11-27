@@ -8,17 +8,17 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
 })
 export class AdminPageComponent implements OnInit {
   selectedImages: File[] = [];
-  imageNames: string[] = [];
   selectorClicked = false;
   select = 'Select';
   notAnImageMsg: string;
+  size = [];
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {}
 
   onFileSelect(event) {
-    this.imageNames = [];
+    this.selectedImages = [];
     this.select = 'Reselect';
     this.selectorClicked = true;
 
@@ -27,8 +27,9 @@ export class AdminPageComponent implements OnInit {
 
     for (const image of imageFiles) {
       if (image.type.match(imageRegex)) {
-        // this.imageNames.push(image.name);
         this.selectedImages.push(image);
+        const sizeFormatted = Math.round(image.size * .001);
+        this.size.push(sizeFormatted);
       } else {
         this.notAnImageMsg = 'One or more files were omitted due to unsupported format. Image files only.';
       }
