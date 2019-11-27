@@ -7,7 +7,7 @@ import * as functions from 'firebase-functions';
 //  response.send("Hello from Firebase!");
 // });
 
-export const onFileChange = functions.storage.object().onChange((event: any) => {
+export const onFileUpload = functions.storage.object().onFinalize((event: any) => {
     console.log(event);
     return;
 });
