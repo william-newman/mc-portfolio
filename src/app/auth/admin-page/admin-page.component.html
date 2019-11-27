@@ -26,12 +26,14 @@
     <br />
     <div class="list-container" *ngIf="selectorClicked">
       Images to Upload
-      <ul class="image-list" *ngFor="let image of selectedImages; index as i">
-        <li>
-          <div class="image-name">Name: {{ image.name }}</div>
-          <div class="image-size">Size: {{ size[i] }}KB</div>
-        </li>
-      </ul>
+      <div class="list-scroller">
+        <ul class="image-list" *ngFor="let image of selectedImages; index as i">
+          <li>
+            <div class="image-name">Name: {{ image.name }}</div>
+            <div class="image-size">Size: {{ size[i] }}KB</div>
+          </li>
+        </ul>
+      </div>
       <br />
       <div class="warning-unsupported">{{ notAnImageMsg }}</div>
       <br />
