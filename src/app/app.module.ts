@@ -12,6 +12,10 @@ import {SlideshowModule} from 'ng-simple-slideshow';
 import { VersionComponent } from './main/version/version.component';
 import { AdminPageComponent } from './auth/admin-page/admin-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -29,7 +33,11 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     SlideshowModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule,
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

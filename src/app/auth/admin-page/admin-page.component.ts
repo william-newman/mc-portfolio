@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpEventType } from '@angular/common/http';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-admin-page',
@@ -13,9 +14,12 @@ export class AdminPageComponent implements OnInit {
   notAnImageMsg: string;
   size = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private storageService: StorageService
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   onFileSelect(event) {
     this.selectedImages = [];
@@ -28,17 +32,22 @@ export class AdminPageComponent implements OnInit {
     for (const image of imageFiles) {
       if (image.type.match(imageRegex)) {
         this.selectedImages.push(image);
-        const sizeFormatted = Math.round(image.size * .001);
+        const sizeFormatted = Math.round(image.size * 0.001);
         this.size.push(sizeFormatted);
       } else {
-        this.notAnImageMsg = 'One or more files were omitted due to unsupported format. Image files only.';
+        this.notAnImageMsg =
+          'One or more files were omitted due to unsupported format. Image files only.';
       }
     }
     console.log(imageFiles);
   }
 
   sendImages() {
-    console.log(this.selectedImages);
+    if (this.selectedImages.length > 0) {
+      this.storageService.onUpload(this.selectedImages);
+    } else {
+      this.notAnImageMsg = 'No images selected.';
+    }
 
     //   const formData = new FormData();
     //   formData.append('image', this.selectedImages, this.selectedImages.name);
