@@ -12,12 +12,16 @@ export class StorageService {
     for (let i = 0; i < imageList.length; i++) {
       console.log(imageList[i]);
 
-      const storageRef = firebase.storage().ref();
-      const imagesRef = storageRef.child('m_images');
-      const fileRef = imagesRef.child(imageList[i].name);
-      fileRef.put(imageList[i]).then(snapshot => {
-        console.log('Works? ' + i);
-      });
+      const databaseRef = this.db.database.ref().root;
+      // databaseRef.ref().put(imageList[i]);
+      console.log(databaseRef);
+
+      // const storageRef = firebase.storage().ref();
+      // const imagesRef = storageRef.child('m_images');
+      // const fileRef = imagesRef.child(imageList[i].name);
+      // fileRef.put(imageList[i]).then(snapshot => {
+      //   console.log('Works? ' + i);
+      // });
     }
   }
 }
