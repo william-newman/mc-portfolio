@@ -52,7 +52,6 @@ export class AdminPageComponent implements OnInit {
     
     this.storageService.uploadProgress
     .subscribe((res)=> {
-      console.log(res);
       this.uploadProgress = res;
       if (res === 100) {
         this.uploadComplete = true;

@@ -1,71 +1,81 @@
-import { Component, OnInit } from '@angular/core';
-import { StorageService } from 'src/app/services/storage.service';
+import { Component, OnInit } from "@angular/core";
+import { StorageService } from "src/app/services/storage.service";
 
 @Component({
-  selector: 'app-gallery',
-  templateUrl: './gallery.component.html',
-  styleUrls: ['./gallery.component.css']
+  selector: "app-gallery",
+  templateUrl: "./gallery.component.html",
+  styleUrls: ["./gallery.component.css"]
 })
 export class GalleryComponent implements OnInit {
   imageArr = [];
+  imageNames = [];
   showModal = false;
-  image1 = 'https://www.skullshoppe.com/images/skulls/rl%20ud1.jpg';
-  image2 = 'https://cdn.mos.cms.futurecdn.net/u8wSHMmMMXzZuAFBCmcsCK.jpg';
+  image1 = "https://www.skullshoppe.com/images/skulls/rl%20ud1.jpg";
+  image2 = "https://cdn.mos.cms.futurecdn.net/u8wSHMmMMXzZuAFBCmcsCK.jpg";
   image3 =
-    'https://cdn.shopify.com/s/files/1/0038/3867/3008/products/Skull_Head_Statue_016_600x.jpg?v=1541304069';
+    "https://cdn.shopify.com/s/files/1/0038/3867/3008/products/Skull_Head_Statue_016_600x.jpg?v=1541304069";
   image4 =
-    'https://upload.wikimedia.org/wikipedia/en/thumb/6/6c/ScorpionMKXRender.png/220px-ScorpionMKXRender.png';
-  image5 = 'https://i.ytimg.com/vi/Sg0rXa1WnZc/maxresdefault.jpg';
+    "https://upload.wikimedia.org/wikipedia/en/thumb/6/6c/ScorpionMKXRender.png/220px-ScorpionMKXRender.png";
+  image5 = "https://i.ytimg.com/vi/Sg0rXa1WnZc/maxresdefault.jpg";
   modalImage: {
-    src: '',
-    alt: 'No image found, error',
-    title: 'Default'
+    src: "";
+    alt: "No image found, error";
+    title: "Default";
   };
 
-  constructor(
-    private storageService: StorageService
-    ) {
-    this.pushImages();
+  constructor(private storageService: StorageService) {
+    this.pullImageNames();
   }
 
   ngOnInit() {
-    this.storageService.pullImages().getDownloadURL()
-    .subscribe(res => {
-      console.log(res);
+    console.log(this.imageNames);
+    
+    // pulledImgRefArr.forEach(imgURL => {
+    //   this.imageArr.push({
+    //     src: imgURL,
+    //     alt: "No worky",
+    //     title: "SUCCESS"
+    //   });
+    // });
+  }
 
-      this.imageArr.push({
-        src: res,
-        alt: 'No worky',
-        title: 'SUCCESS'
-      });
+  pullImageNames() {
+    const imageNames = [];
+    const imageRefs = [];
+    const pulledImgRefArr = this.storageService.pullImageNames().valueChanges()
+    .subscribe(pulledImageNames => {        
+      console.log(pulledImageNames);
+       pulledImageNames.forEach(imageName => {
+         this.imageNames.push(imageName);
+       });
     });
   }
 
   pushImages() {
     this.imageArr.push({
       src: this.image1,
-      alt: 'Skull boi',
-      title: 'I dunno'
+      alt: "Skull boi",
+      title: "I dunno"
     });
     this.imageArr.push({
       src: this.image2,
-      alt: 'Skull boi',
-      title: 'I dunno'
+      alt: "Skull boi",
+      title: "I dunno"
     });
     this.imageArr.push({
       src: this.image3,
-      alt: 'Skull boi',
-      title: 'I dunno'
+      alt: "Skull boi",
+      title: "I dunno"
     });
     this.imageArr.push({
       src: this.image4,
-      alt: 'Skull boi',
-      title: 'GET OVER HERE'
+      alt: "Skull boi",
+      title: "GET OVER HERE"
     });
     this.imageArr.push({
       src: this.image5,
-      alt: 'Vader',
-      title: 'Darth Vader'
+      alt: "Vader",
+      title: "Darth Vader"
     });
   }
 

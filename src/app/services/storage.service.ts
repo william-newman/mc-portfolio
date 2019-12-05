@@ -1,29 +1,48 @@
-import { Injectable } from '@angular/core';
-import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from 'angularfire2/storage';
-import { Observable } from 'rxjs';
+import { Injectable } from "@angular/core";
+import {
+  AngularFireStorage,
+  AngularFireStorageReference,
+  AngularFireUploadTask
+} from "angularfire2/storage";
+import { Observable } from "rxjs";
+import { AngularFireDatabase } from "angularfire2/database";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class StorageService {
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
   uploadProgress: Observable<number>;
+  imageRefs = [];
 
-  constructor(private db: AngularFireStorage) {}
+  constructor(
+    private db: AngularFireStorage,
+    private rtdb: AngularFireDatabase
+  ) {}
 
   onUpload(imageList: any) {
     for (let i = 0; i < imageList.length; i++) {
       const currentImage = imageList[i];
-      this.ref = this.db.ref('pictures/' + currentImage.name);
+      this.ref = this.db.ref("pictures/" + currentImage.name);
+      this.rtdb.database.ref("imageNames").push(currentImage.name);
       this.task = this.ref.put(currentImage);
       this.uploadProgress = this.task.percentageChanges();
     }
   }
 
-  pullImages() {
-    const store = this.db.ref('pictures/skull_drawn.jpg');
-    return store;
-
+  pullImageNames() {
+    const path = "/imageNames";
+    return this.rtdb
+      .list(path);
   }
+
+  // pullImageRefs() {
+  //   imageNames.forEach(imgName => {          
+  //     this.db.ref("pictures/" + imgName).getDownloadURL()
+  //     .subscribe(names => {            
+  //       this.imageRefs.push(names);
+  //     });
+  //   });
+  // }
 }
