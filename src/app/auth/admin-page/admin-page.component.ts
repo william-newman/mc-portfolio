@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpEventType } from '@angular/common/http';
 import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
@@ -13,10 +12,11 @@ export class AdminPageComponent implements OnInit {
   select = 'Select';
   notAnImageMsg: string;
   size = [];
+  uploadStarted = false;
+  uploadProgress: number;
   uploadComplete = false;
 
   constructor(
-    private http: HttpClient,
     private storageService: StorageService
   ) { }
 
@@ -43,13 +43,21 @@ export class AdminPageComponent implements OnInit {
   }
 
   sendImages() {
-    let uploadBool = false;
+    this.uploadStarted = true;
     if (this.selectedImages.length > 0) {
-      uploadBool = this.storageService.onUpload(this.selectedImages);
+      this.storageService.onUpload(this.selectedImages);
     } else {
       this.notAnImageMsg = 'No images selected.';
     }
-    this.uploadComplete = uploadBool;
+    
+    this.storageService.uploadProgress
+    .subscribe((res)=> {
+      console.log(res);
+      this.uploadProgress = res;
+      if (res === 100) {
+        this.uploadComplete = true;
+      }
+    });
 
     //   const formData = new FormData();
     //   formData.append('image', this.selectedImages, this.selectedImages.name);

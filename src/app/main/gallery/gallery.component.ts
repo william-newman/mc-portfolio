@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-gallery',
@@ -21,16 +22,24 @@ export class GalleryComponent implements OnInit {
     title: 'Default'
   };
 
-  constructor() {
-    this.pushImages();
-    this.pushImages();
-    this.pushImages();
-    this.pushImages();
-    this.pushImages();
+  constructor(
+    private storageService: StorageService
+    ) {
     this.pushImages();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.storageService.pullImages().getDownloadURL()
+    .subscribe(res => {
+      console.log(res);
+
+      this.imageArr.push({
+        src: res,
+        alt: 'No worky',
+        title: 'SUCCESS'
+      });
+    });
+  }
 
   pushImages() {
     this.imageArr.push({

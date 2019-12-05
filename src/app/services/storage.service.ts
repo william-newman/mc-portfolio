@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from 'angularfire2/storage';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,7 @@ import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask 
 export class StorageService {
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
+  uploadProgress: Observable<number>;
 
   constructor(private db: AngularFireStorage) {}
 
@@ -15,7 +17,13 @@ export class StorageService {
       const currentImage = imageList[i];
       this.ref = this.db.ref('pictures/' + currentImage.name);
       this.task = this.ref.put(currentImage);
+      this.uploadProgress = this.task.percentageChanges();
     }
-    return true;
+  }
+
+  pullImages() {
+    const store = this.db.ref('pictures/skull_drawn.jpg');
+    return store;
+
   }
 }
