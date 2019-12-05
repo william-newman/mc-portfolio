@@ -1,4 +1,3 @@
-declare var require: any;
 export const environment = {
   production: true,
   firebaseConfig: {
@@ -10,6 +9,5 @@ export const environment = {
     messagingSenderId: '337222460170',
     appId: '1:337222460170:web:d64c23369c5352fd8350f3',
     measurementId: 'G-YVM4M2Z64M'
-  },
-  appVersion: require('../../package.json').version
+  }
 };

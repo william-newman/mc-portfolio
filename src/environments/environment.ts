@@ -1,4 +1,3 @@
-declare var require: any;
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
@@ -14,8 +13,7 @@ export const environment = {
     messagingSenderId: '337222460170',
     appId: '1:337222460170:web:d64c23369c5352fd8350f3',
     measurementId: 'G-YVM4M2Z64M'
-  },
-  appVersion: require('../../package.json').version
+  }
 };
 
 /*

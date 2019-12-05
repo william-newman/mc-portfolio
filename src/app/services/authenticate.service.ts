@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthenticateService {
+  appVersion = '1.1.0';
 
   constructor() { }
 }
