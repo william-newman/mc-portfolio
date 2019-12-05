@@ -13,6 +13,7 @@ export class AdminPageComponent implements OnInit {
   select = 'Select';
   notAnImageMsg: string;
   size = [];
+  uploadComplete = false;
 
   constructor(
     private http: HttpClient,
@@ -39,15 +40,16 @@ export class AdminPageComponent implements OnInit {
           'One or more files were omitted due to unsupported format. Image files only.';
       }
     }
-    console.log(imageFiles);
   }
 
   sendImages() {
+    let uploadBool = false;
     if (this.selectedImages.length > 0) {
-      this.storageService.onUpload(this.selectedImages);
+      uploadBool = this.storageService.onUpload(this.selectedImages);
     } else {
       this.notAnImageMsg = 'No images selected.';
     }
+    this.uploadComplete = uploadBool;
 
     //   const formData = new FormData();
     //   formData.append('image', this.selectedImages, this.selectedImages.name);

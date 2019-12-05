@@ -1,27 +1,21 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
-import * as firebase from 'firebase/app';
+import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from 'angularfire2/storage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
-  constructor(private db: AngularFireDatabase) {}
+  ref: AngularFireStorageReference;
+  task: AngularFireUploadTask;
+
+  constructor(private db: AngularFireStorage) {}
 
   onUpload(imageList: any) {
     for (let i = 0; i < imageList.length; i++) {
-      console.log(imageList[i]);
-
-      const databaseRef = this.db.database.ref().root;
-      // databaseRef.ref().put(imageList[i]);
-      console.log(databaseRef);
-
-      // const storageRef = firebase.storage().ref();
-      // const imagesRef = storageRef.child('m_images');
-      // const fileRef = imagesRef.child(imageList[i].name);
-      // fileRef.put(imageList[i]).then(snapshot => {
-      //   console.log('Works? ' + i);
-      // });
+      const currentImage = imageList[i];
+      this.ref = this.db.ref('pictures/' + currentImage.name);
+      this.task = this.ref.put(currentImage);
     }
+    return true;
   }
 }
