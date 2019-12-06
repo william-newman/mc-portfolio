@@ -14,6 +14,7 @@ export class StorageService {
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
   uploadProgress: Observable<number>;
+  imageNames = [];
   imageRefs = [];
 
   constructor(
@@ -33,16 +34,29 @@ export class StorageService {
 
   pullImageNames() {
     const path = "/imageNames";
-    return this.rtdb
-      .list(path);
+    console.log('service 1');
+    
+    const butts = this.rtdb
+      .list(path).valueChanges().subscribe(pulledImageNames => {
+         pulledImageNames.forEach(imageName => {
+           this.imageNames.push(imageName);
+         });
+         console.log(this.imageNames);
+      });
+
+      butts.add(
+        this.pullImageRefs()
+      );
   }
 
-  // pullImageRefs() {
+  pullImageRefs() {
+    console.log('service 2');
+    
   //   imageNames.forEach(imgName => {          
   //     this.db.ref("pictures/" + imgName).getDownloadURL()
   //     .subscribe(names => {            
   //       this.imageRefs.push(names);
   //     });
   //   });
-  // }
+  }
 }

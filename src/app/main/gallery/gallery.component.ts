@@ -40,15 +40,7 @@ export class GalleryComponent implements OnInit {
   }
 
   pullImageNames() {
-    const imageNames = [];
-    const imageRefs = [];
-    const pulledImgRefArr = this.storageService.pullImageNames().valueChanges()
-    .subscribe(pulledImageNames => {        
-      console.log(pulledImageNames);
-       pulledImageNames.forEach(imageName => {
-         this.imageNames.push(imageName);
-       });
-    });
+    const pulledImgRefArr = this.storageService.pullImageNames();
   }
 
   pushImages() {
