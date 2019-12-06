@@ -41,6 +41,11 @@ export class GalleryComponent implements OnInit {
 
   pullImageNames() {
     const pulledImgRefArr = this.storageService.pullImageNames();
+    console.log(pulledImgRefArr);
+
+    // pulledImgRefArr.forEach(element => {
+      //onDestroy and pull arr
+    // });
   }
 
   pushImages() {

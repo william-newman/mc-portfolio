@@ -35,28 +35,28 @@ export class StorageService {
   pullImageNames() {
     const path = "/imageNames";
     console.log('service 1');
-    
-    const butts = this.rtdb
+    this.rtdb
       .list(path).valueChanges().subscribe(pulledImageNames => {
          pulledImageNames.forEach(imageName => {
            this.imageNames.push(imageName);
          });
          console.log(this.imageNames);
+         
+         this.imageNames.forEach(imgName => {          
+          this.db.ref("pictures/" + imgName).getDownloadURL()
+          .subscribe(names => {            
+            this.imageRefs.push(names);
+            console.log(this.imageRefs);
+            
+            return this.imageRefs;
+          });
+        });
       });
-
-      butts.add(
-        this.pullImageRefs()
-      );
   }
 
   pullImageRefs() {
     console.log('service 2');
     
-  //   imageNames.forEach(imgName => {          
-  //     this.db.ref("pictures/" + imgName).getDownloadURL()
-  //     .subscribe(names => {            
-  //       this.imageRefs.push(names);
-  //     });
-  //   });
+    
   }
 }
