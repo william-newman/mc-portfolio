@@ -22,7 +22,7 @@ export class AdminPageComponent implements OnInit {
 
   ngOnInit() { }
 
-  onFileSelect(event) {
+  onFileSelect(event: any) {
     this.selectedImages = [];
     this.select = 'Reselect';
     this.selectorClicked = true;
@@ -57,19 +57,5 @@ export class AdminPageComponent implements OnInit {
         this.uploadComplete = true;
       }
     });
-
-    //   const formData = new FormData();
-    //   formData.append('image', this.selectedImages, this.selectedImages.name);
-    //   this.http.post('url', formData, {
-    //     reportProgress: true,
-    //     observe: 'events'
-    //   })
-    //   .subscribe(event => {
-    //     if (event.type === HttpEventType.UploadProgress) {
-    //       console.log('Upload Progress: ' + Math.round(event.loaded / event.total * 100) + '%');
-    //     } else if (event.type === HttpEventType.Response) {
-    //       console.log(event);
-    //     }
-    //   });
   }
 }
