@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticateService } from 'src/app/services/authenticate.service';
 
 @Component({
   selector: 'app-version',
@@ -7,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VersionComponent implements OnInit {
   loginModal = false;
+  currentAppVersion = 'Error, please reload.';
 
-  constructor() { }
+  constructor(private authService: AuthenticateService) {
+    this.currentAppVersion = this.authService.appVersion;
+  }
 
   ngOnInit() {
   }
