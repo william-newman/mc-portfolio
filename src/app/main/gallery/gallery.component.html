@@ -1,11 +1,23 @@
 <div class="gallery-container">
-  <div class="gallery-photos" *ngFor="let image of imageArr, let i = index">
+  <div class="err">{{ imagePullError }}</div>
+  <div class="gallery-photos" *ngFor="let image of imageArr; let i = index">
     <div class="image-container" (click)="fullSizeImage(i)">
-      <img class="images-g" src={{image.src}} alt={{image.alt}} title={{image.title}} />
+      <img
+        class="images-g"
+        src="{{ image.src }}"
+        alt="{{ image.alt }}"
+        title="{{ image.title }}"
+      />
     </div>
   </div>
 </div>
+
 <div class="image-modal" *ngIf="showModal" (click)="hideModal()">
   <span class="modal-image-container"></span>
-  <img class="images-full" src={{modalImage.src}} alt={{modalImage.alt}} title={{modalImage.title}}>
+  <img
+    class="images-full"
+    src="{{ modalImage.src }}"
+    alt="{{ modalImage.alt }}"
+    title="{{ modalImage.title }}"
+  />
 </div>

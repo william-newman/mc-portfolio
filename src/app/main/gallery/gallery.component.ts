@@ -7,9 +7,12 @@ import { StorageService } from "src/app/services/storage.service";
   styleUrls: ["./gallery.component.css"]
 })
 export class GalleryComponent implements OnInit {
-  imageArr = [];
-  imageNames = [];
+  imageArr = []; // Image objects
+  imageNames = []; // Names of images - used to pull images from Firebase Storage
+  imageRefs = []; // SRC of images pulled from Firebase Storage
   showModal = false;
+  loadingImages = true;
+  imagePullError = null;
   image1 = "https://www.skullshoppe.com/images/skulls/rl%20ud1.jpg";
   image2 = "https://cdn.mos.cms.futurecdn.net/u8wSHMmMMXzZuAFBCmcsCK.jpg";
   image3 =
@@ -28,24 +31,44 @@ export class GalleryComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.imageNames);
-    
-    // pulledImgRefArr.forEach(imgURL => {
-    //   this.imageArr.push({
-    //     src: imgURL,
-    //     alt: "No worky",
-    //     title: "SUCCESS"
-    //   });
-    // });
+    this.checkImageArr();
+  }
+
+  checkImageArr() {
+    if (this.imageArr.length < 1) {
+      this.imagePullError = 'Loading ...';
+    } else {
+      this.imagePullError = null;
+    }
   }
 
   pullImageNames() {
-    const pulledImgRefArr = this.storageService.pullImageNames();
-    console.log(pulledImgRefArr);
+    this.storageService.pullImageNames()
+    .valueChanges()
+      .subscribe(pulledImageNames => {
+        pulledImageNames.forEach(imageName => {
+          this.imageNames.push(imageName);
+        });
 
-    // pulledImgRefArr.forEach(element => {
-      //onDestroy and pull arr
-    // });
+        this.imageNames.forEach(imgName => {
+          this.pullImageRefs(imgName);
+        });
+      });
+  }
+
+  pullImageRefs(imageName) {
+    this.storageService.pullImageRefs(imageName)
+    .getDownloadURL()
+    .subscribe(imgURL => {
+      this.imageRefs.push(imgURL);
+
+      this.imageArr.push({
+        src: imgURL,
+        alt: imageName,
+        title: imageName
+      });
+      this.checkImageArr();
+    });
   }
 
   pushImages() {

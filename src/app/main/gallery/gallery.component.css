@@ -30,6 +30,13 @@ img {
   color: whitesmoke;
 }
 
+.err {
+    color: blanchedalmond;
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Lato', sans-serif;
+}
+
 .image-modal {
     color: whitesmoke;
     position: absolute;

@@ -34,29 +34,10 @@ export class StorageService {
 
   pullImageNames() {
     const path = "/imageNames";
-    console.log('service 1');
-    this.rtdb
-      .list(path).valueChanges().subscribe(pulledImageNames => {
-         pulledImageNames.forEach(imageName => {
-           this.imageNames.push(imageName);
-         });
-         console.log(this.imageNames);
-         
-         this.imageNames.forEach(imgName => {          
-          this.db.ref("pictures/" + imgName).getDownloadURL()
-          .subscribe(names => {            
-            this.imageRefs.push(names);
-            console.log(this.imageRefs);
-            
-            return this.imageRefs;
-          });
-        });
-      });
+    return this.rtdb.list(path);
   }
 
-  pullImageRefs() {
-    console.log('service 2');
-    
-    
+  pullImageRefs(imgName) {
+    return this.db.ref("pictures/" + imgName);
   }
 }
