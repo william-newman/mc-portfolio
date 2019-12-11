@@ -7,14 +7,14 @@ import { StorageService } from 'src/app/services/storage.service';
   styleUrls: ['./admin-page.component.css']
 })
 export class AdminPageComponent implements OnInit {
-  selectedImages: File[] = [];
-  selectorClicked = false;
-  select = 'Select';
-  notAnImageMsg: string;
+  selectedImages: File[] = []; // Array of images ready to upload
+  selectorClicked: boolean = false; // Whether the selector has been clicked
+  select: string = 'Select'; // Text on image selection button
+  notAnImageMsg: string; // Error message for when user selects a file that is not an image
   size = [];
-  uploadStarted = false;
-  uploadProgress: number;
-  uploadComplete = false;
+  uploadStarted: boolean = false; // File upload started
+  uploadProgress: number; // File upload progress percentage
+  uploadComplete: boolean = false; // File upload complete
 
   constructor(
     private storageService: StorageService
@@ -24,7 +24,7 @@ export class AdminPageComponent implements OnInit {
 
   onFileSelect(event: any) {
     this.selectedImages = [];
-    this.select = 'Reselect';
+    this.select = 'Reselect'; // Change button text to reflect change
     this.selectorClicked = true;
 
     const imageFiles = event.target.files as File[];

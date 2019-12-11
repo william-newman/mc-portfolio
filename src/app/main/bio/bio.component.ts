@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bio.component.css']
 })
 export class BioComponent implements OnInit {
-  redClass = false;
+  redClass: boolean = false; // Strange attempt to use alternate class names in the bio?
 
   constructor() { }
 

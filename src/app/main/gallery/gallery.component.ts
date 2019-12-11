@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { StorageService } from "src/app/services/storage.service";
+import { ImageObject } from 'src/app/models/image-object';
 
 @Component({
   selector: "app-gallery",
@@ -7,24 +8,13 @@ import { StorageService } from "src/app/services/storage.service";
   styleUrls: ["./gallery.component.css"]
 })
 export class GalleryComponent implements OnInit {
-  imageArr = []; // Image objects
-  imageNames = []; // Names of images - used to pull images from Firebase Storage
-  imageRefs = []; // SRC of images pulled from Firebase Storage
-  showModal = false;
+  imageArr: ImageObject[] = []; // Image objects
+  imageNames: string[] = []; // Names of images - used to pull images from Firebase Storage
+  imageRefs: string[] = []; // SRC of images pulled from Firebase Storage
+  showModal = false; // Boolean to show or hide the full size image modal
   loadingImages = true;
   imagePullError = null;
-  image1 = "https://www.skullshoppe.com/images/skulls/rl%20ud1.jpg";
-  image2 = "https://cdn.mos.cms.futurecdn.net/u8wSHMmMMXzZuAFBCmcsCK.jpg";
-  image3 =
-    "https://cdn.shopify.com/s/files/1/0038/3867/3008/products/Skull_Head_Statue_016_600x.jpg?v=1541304069";
-  image4 =
-    "https://upload.wikimedia.org/wikipedia/en/thumb/6/6c/ScorpionMKXRender.png/220px-ScorpionMKXRender.png";
-  image5 = "https://i.ytimg.com/vi/Sg0rXa1WnZc/maxresdefault.jpg";
-  modalImage: {
-    src: "";
-    alt: "No image found, error";
-    title: "Default";
-  };
+  modalImage: ImageObject;
 
   constructor(private storageService: StorageService) {
     this.pullImageNames();
@@ -45,12 +35,12 @@ export class GalleryComponent implements OnInit {
   pullImageNames() {
     this.storageService.pullImageNames()
     .valueChanges()
-      .subscribe(pulledImageNames => {
-        pulledImageNames.forEach(imageName => {
+      .subscribe((pulledImageNames: string[]) => {
+        pulledImageNames.forEach((imageName: string) => {
           this.imageNames.push(imageName);
         });
 
-        this.imageNames.forEach(imgName => {
+        this.imageNames.forEach((imgName: string) => {
           this.pullImageRefs(imgName);
         });
       });
@@ -68,34 +58,6 @@ export class GalleryComponent implements OnInit {
         title: imageName
       });
       this.checkImageArr();
-    });
-  }
-
-  pushImages() {
-    this.imageArr.push({
-      src: this.image1,
-      alt: "Skull boi",
-      title: "I dunno"
-    });
-    this.imageArr.push({
-      src: this.image2,
-      alt: "Skull boi",
-      title: "I dunno"
-    });
-    this.imageArr.push({
-      src: this.image3,
-      alt: "Skull boi",
-      title: "I dunno"
-    });
-    this.imageArr.push({
-      src: this.image4,
-      alt: "Skull boi",
-      title: "GET OVER HERE"
-    });
-    this.imageArr.push({
-      src: this.image5,
-      alt: "Vader",
-      title: "Darth Vader"
     });
   }
 
