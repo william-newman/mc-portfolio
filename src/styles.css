@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
 body {
   z-index: -5;
   padding: 0;
@@ -17,7 +19,7 @@ body {
 }
 
 @font-face {
-  font-family: 'die nasty';
+  font-family: 'lato', sans-serif;
   src: url('./assets/dienasty.ttf');
 }
 

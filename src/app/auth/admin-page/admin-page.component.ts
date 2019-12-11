@@ -25,10 +25,10 @@ export class AdminPageComponent implements OnInit {
   onFileSelect(event: any) {
     this.selectedImages = [];
     this.select = 'Reselect'; // Change button text to reflect change
-    this.selectorClicked = true;
+    this.selectorClicked = true; // selector button has been clicked
 
-    const imageFiles = event.target.files as File[];
-    const imageRegex = /^image\//;
+    const imageFiles = event.target.files as File[]; // Pull file array from event object
+    const imageRegex = /^image\//; // File type = image
 
     for (const image of imageFiles) {
       if (image.type.match(imageRegex)) {

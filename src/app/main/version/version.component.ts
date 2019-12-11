@@ -7,8 +7,8 @@ import { AuthenticateService } from 'src/app/services/authenticate.service';
   styleUrls: ['./version.component.css']
 })
 export class VersionComponent implements OnInit {
-  loginModal = false;
-  currentAppVersion = 'Error, please reload.';
+  loginModal: boolean = false;
+  currentAppVersion: string = 'Error, please reload.';
 
   constructor(private authService: AuthenticateService) {
     this.currentAppVersion = this.authService.appVersion;
@@ -17,14 +17,17 @@ export class VersionComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Shows login modal
   loginModalShow() {
     this.loginModal = true;
   }
 
+  // Hides login modal
   loginModalHide() {
     this.loginModal = false;
   }
 
+  // Stop event propagation so that the input form cannot be clicked through
   badTouch(event: MouseEvent) {
     event.stopPropagation();
   }

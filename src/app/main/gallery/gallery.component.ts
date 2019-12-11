@@ -11,10 +11,10 @@ export class GalleryComponent implements OnInit {
   imageArr: ImageObject[] = []; // Image objects
   imageNames: string[] = []; // Names of images - used to pull images from Firebase Storage
   imageRefs: string[] = []; // SRC of images pulled from Firebase Storage
-  showModal = false; // Boolean to show or hide the full size image modal
-  loadingImages = true;
-  imagePullError = null;
-  modalImage: ImageObject;
+  showModal: boolean = false; // Boolean to show or hide the full size image modal
+  loadingImages: boolean = true; // Whether images are loading or not
+  imagePullError: string = null; // Place for call errors
+  modalImage: ImageObject; // Selected image to full screen
 
   constructor(private storageService: StorageService) {
     this.pullImageNames();

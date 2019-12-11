@@ -8,9 +8,6 @@ import { IImage } from 'ng-simple-slideshow';
 })
 export class HomeComponent implements OnInit {
   imageSources: (string | IImage)[] = [
-    // '../../../resources/skull_drawn.jpg',
-    // '../../../resources/skull_vector.jpg',
-    // '../../../resources/small_skull_drawn.jpg'
     {
       url: 'https://cdn-prod.mortalkombat.com/features/scorpion-bg.jpg',
       caption: 'Picture with caption',
@@ -29,9 +26,9 @@ export class HomeComponent implements OnInit {
       title: 'hehe'
     }
   ];
-  autoPlayInterval = 5000;
-  captionColor = 'whitesmoke';
-  captionBackground = 'rgba(0, 0, 0, .35)';
+  autoPlayInterval: number = 5000;
+  captionColor: string = 'whitesmoke';
+  captionBackground: string = 'rgba(0, 0, 0, .35)';
 
   constructor() {}
 
