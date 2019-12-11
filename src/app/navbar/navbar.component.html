@@ -1,11 +1,40 @@
-<div class="nav-header die-nasty">
+<div class="full-bar">
+  <div class="nav-header die-nasty">
     <a class="link" routerLink="/">MIKE CUFF</a>
-</div>
-<div class="nav-links die-nasty">
+  </div>
+
+  <nav [ngClass]="{ show: hamActive, 'nav-links': true, 'die-nasty': true }">
     <a class="link pad" routerLink="/gallery">Gallery</a>
     <a class="link pad" routerLink="/bio">Bio</a>
     <a class="link pad" routerLink="/contact">Contact</a>
+  </nav>
 </div>
+
 <div class="footer">
-    <a class="link footer" routerLink="/version">V{{ versionNumber }}</a>
+  <a class="link footer" routerLink="/version">V{{ versionNumber }}</a>
 </div>
+
+<div id="container" class="ham-boi" (click)="toggleHamburgerActive()">
+  <div id="burger" [ngClass]="{ active: hamActive }">
+    <div class="bun top"></div>
+    <div class="filling"></div>
+    <div class="bun bottom"></div>
+  </div>
+</div>
+
+<nav [ngClass]="{ 'show': hamActive, 'ham-boi': true }">
+  <ul>
+    <li class="purple">
+      <a class="link" routerLink="/">Home</a>
+    </li>
+    <li class="green">
+      <a class="link pad" routerLink="/gallery">Gallery</a>
+    </li>
+    <li class="red">
+      <a class="link pad" routerLink="/bio">Bio</a>
+    </li>
+    <li class="yellow">
+      <a class="link pad" routerLink="/contact">Contact</a>
+    </li>
+  </ul>
+</nav>

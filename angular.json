@@ -120,6 +120,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "mc-portfolio"
+    }
+  },
+  "defaultProject": "mc-portfolio",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
