@@ -1,50 +1,6 @@
+<div class="header">
+  Administration
+</div>
 <div class="admin-container">
-  <div class="header">
-    Admin Page
-  </div>
-  <br />
-  <div class="image-upload">
-    <input
-      type="file"
-      name="image-selector"
-      id="image-selector"
-      multiple
-      accept="image/*"
-      (change)="onFileSelect($event)"
-      #fileInput
-    />
-    <button
-      type="button"
-      (click)="fileInput.click()"
-      id="select-btn"
-      class="select-btn btn"
-    >
-      {{ select }} Image(s) to Upload
-    </button>
-    <label for="select-btn">(.jpg, .png, .gif supported)</label>
-    <br />
-    <br />
-    <div class="list-container" *ngIf="selectorClicked">
-      Images to Upload
-      <div class="list-scroller">
-        <ul class="image-list" *ngFor="let image of selectedImages; index as i">
-          <li>
-            <div class="image-name">Name: {{ image.name }}</div>
-            <div class="image-size">Size: {{ size[i] }}KB</div>
-          </li>
-        </ul>
-      </div>
-      <br />
-      <div class="warning-unsupported">{{ notAnImageMsg }}</div>
-      <br />
-      <button class="upload-btn btn" (click)="sendImages()">
-        Upload Image(s)
-      </button>
-      <br />
-      <div class="progress" *ngIf="uploadStarted">Progress: {{ uploadProgress }}%</div>
-      <div class="completion-level" *ngIf="uploadComplete">
-        Upload Complete!
-      </div>
-    </div>
-  </div>
+  <app-add-images></app-add-images>
 </div>

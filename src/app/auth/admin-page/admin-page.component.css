@@ -1,23 +1,17 @@
 .admin-container {
-    color: cornsilk;
-    position: absolute;
-    top: 30vh;
-    left: 25vw;
-    height: 60vh;
-    width: 50vw;
+  color: cornsilk;
+  position: absolute;
+  top: 30vh;
+  left: 25vw;
+  height: 60vh;
+  width: 50vw;
 }
 
-#image-selector {
-    display: none;
-}
-
-.btn {
-    padding: 1%;
-    margin: 1%;
-}
-
-.list-scroller {
-    border: solid 2px rgba(0, 0, 0, 0.2);
-    height: 30vh;
-    overflow-y: auto;
+.header {
+  position: absolute;
+  top: 15vh;
+  left: 45vw;
+  text-align: center;
+  color: blanchedalmond;
+  font-size: 1.5rem;
 }
