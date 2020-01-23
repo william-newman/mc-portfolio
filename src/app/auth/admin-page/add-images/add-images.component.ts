@@ -16,11 +16,16 @@ export class AddImagesComponent implements OnInit {
   uploadProgress: number; // File upload progress percentage
   uploadComplete: boolean = false; // File upload complete
   imageNameListLength: number;
+  collapsed: boolean = false;
 
   constructor(private storageService: StorageService) {}
 
   ngOnInit() {
     this.pullImageNameList();
+  }
+
+  toggleCollapse() {
+    this.collapsed = !this.collapsed;
   }
 
   pullImageNameList() {
@@ -43,9 +48,6 @@ export class AddImagesComponent implements OnInit {
     for (let image of imageFiles) {
       if (image.type.match(imageRegex)) {
         image[ "index" ] = this.imageNameListLength;
-        console.log(image);
-        console.log(this.imageNameListLength);
-
         this.selectedImages.push(image);
         const sizeFormatted = Math.round(image.size * 0.001);
         this.size.push(sizeFormatted);
