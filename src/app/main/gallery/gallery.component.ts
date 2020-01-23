@@ -9,7 +9,7 @@ import { ImageObject } from 'src/app/models/image-object';
 })
 export class GalleryComponent implements OnInit {
   imageArr: ImageObject[] = []; // Image objects
-  imageNames: string[] = []; // Names of images - used to pull images from Firebase Storage
+  imageMetadata: string[] = []; // Image metadata including names of images which is used to pull images from Firebase Storage
   imageRefs: string[] = []; // SRC of images pulled from Firebase Storage
   showModal: boolean = false; // Boolean to show or hide the full size image modal
   loadingImages: boolean = true; // Whether images are loading or not
@@ -17,7 +17,7 @@ export class GalleryComponent implements OnInit {
   modalImage: ImageObject; // Selected image to full screen
 
   constructor(private storageService: StorageService) {
-    this.pullImageNames();
+    this.pullImageMetadata();
   }
 
   ngOnInit() {
@@ -28,34 +28,46 @@ export class GalleryComponent implements OnInit {
     if (this.imageArr.length < 1) {
       this.imagePullError = 'Loading ...';
     } else {
+      this.imageArr.sort(this.compare);
       this.imagePullError = null;
     }
   }
 
-  pullImageNames() {
-    this.storageService.pullImageNames()
+  compare( a: ImageObject, b: ImageObject ) {
+    if ( a.index < b.index ){
+      return -1;
+    }
+    if ( a.index > b.index ){
+      return 1;
+    }
+    return 0;
+  }
+
+  pullImageMetadata() {
+    this.storageService.pullImageMetadata()
     .valueChanges()
-      .subscribe((pulledImageNames: string[]) => {
-        pulledImageNames.forEach((imageName: string) => {
-          this.imageNames.push(imageName);
+      .subscribe((pulledImageMetadata: string[]) => {
+        pulledImageMetadata.forEach((imageData: any) => {          
+          this.imageMetadata.push(imageData);
         });
 
-        this.imageNames.forEach((imgName: string) => {
-          this.pullImageRefs(imgName);
+        this.imageMetadata.forEach((imgData: any) => {
+          this.pullImageRefs(imgData);
         });
       });
   }
 
-  pullImageRefs(imageName) {
-    this.storageService.pullImageRefs(imageName)
+  pullImageRefs(imageMetadata) {
+    this.storageService.pullImageRefs(imageMetadata.name)
     .getDownloadURL()
     .subscribe(imgURL => {
       this.imageRefs.push(imgURL);
 
       this.imageArr.push({
+        index: imageMetadata.index,
         src: imgURL,
-        alt: imageName,
-        title: imageName
+        alt: imageMetadata.name,
+        title: imageMetadata.name
       });
       this.checkImageArr();
     });

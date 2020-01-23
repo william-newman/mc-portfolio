@@ -16,6 +16,7 @@ export class StorageService {
   uploadProgress: Observable<number>;
   imageNames = [];
   imageRefs = [];
+  rtdbPath = 'imageMetadata';
 
   constructor(
     private db: AngularFireStorage,
@@ -25,15 +26,22 @@ export class StorageService {
   onUpload(imageList: any) {
     for (let i = 0; i < imageList.length; i++) {
       const currentImage = imageList[i];
-      this.ref = this.db.ref("pictures/" + currentImage.name);
-      this.rtdb.database.ref("imageNames").push(currentImage.name);
+
+      const imageMetadata = {
+        index: currentImage.index,
+        name: currentImage.name,
+        type: currentImage.type
+      }
+      
+      this.ref = this.db.ref("pictures/" + imageMetadata.name);
+      this.rtdb.database.ref(this.rtdbPath).push(imageMetadata);
       this.task = this.ref.put(currentImage);
       this.uploadProgress = this.task.percentageChanges();
     }
   }
 
-  pullImageNames() {
-    const path = "/imageNames";
+  pullImageMetadata() {
+    const path = "/" + this.rtdbPath;
     return this.rtdb.list(path);
   }
 
