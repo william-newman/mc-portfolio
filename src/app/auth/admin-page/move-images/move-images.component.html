@@ -5,49 +5,33 @@
     <span *ngIf="collapsed" class="arrow up"></span>
   </h3>
   <span *ngIf="collapsed">
-    <input
-      type="file"
-      name="image-selector"
-      id="image-selector"
-      multiple
-      accept="image/*"
-      (change)="onFileSelect($event)"
-      #fileInput
-    />
-    <button
-      type="button"
-      (click)="fileInput.click()"
-      id="select-btn"
-      class="select-btn btn"
-    >
-      {{ select }} Image(s) to Upload
-    </button>
-    <label for="select-btn">(.jpg, .png, .gif supported)</label>
-    <br />
-    <br />
-    <div class="list-container" *ngIf="selectorClicked">
-      Images to Upload
-      <div class="list-scroller">
-        <ul class="image-list" *ngFor="let image of selectedImages; index as i">
-          <li>
-            <div class="image-name">Name: {{ image.name }}</div>
-            <div class="image-size">Size: {{ size[i] }}KB</div>
-          </li>
-        </ul>
-      </div>
-      <br />
-      <div class="warning-unsupported">{{ notAnImageMsg }}</div>
-      <br />
-      <button class="upload-btn btn" (click)="sendImages()">
-        Upload Image(s)
-      </button>
-      <br />
-      <div class="progress" *ngIf="uploadStarted">
-        Progress: {{ uploadProgress }}%
-      </div>
-      <div class="completion-level" *ngIf="uploadComplete">
-        Upload Complete!
-      </div>
+    <table id="image-item">
+      <thead>
+        <tr>
+          <th>Order</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Controls</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="image-list" *ngFor="let image of imageMetadata; let i = index">
+            <td class="index">{{ image.index }}</td>
+            <td class="name">{{ image.name }}</td>
+            <td class="type">{{ image.type }}</td>
+            <td class="controls">
+              <span class="move-up" (click)="moveUp(i)">Up</span>
+              <span class="move-down" (click)="moveDown(i)">Down</span>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="errors">{{ errMessage }}</div>
+    <div class="link" (click)="saveConfig()">
+      Save Configuration
+    </div>
+    <div class="link float" (click)="resetConfig()">
+      Reset Configuration
     </div>
   </span>
 </div>

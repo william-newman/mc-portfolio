@@ -2,10 +2,6 @@
   <div class="err">{{ imagePullError }}</div>
   <div class="gallery-photos" *ngFor="let image of imageArr; let i = index">
     <div class="image-container" (click)="fullSizeImage(i)">
-      <div class="link">
-        {{ image.index }}
-        {{ i }}
-      </div>
       <img
         class="images-g"
         src="{{ image.src }}"

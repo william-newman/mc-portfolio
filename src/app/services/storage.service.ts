@@ -6,6 +6,7 @@ import {
 } from "angularfire2/storage";
 import { Observable } from "rxjs";
 import { AngularFireDatabase } from "angularfire2/database";
+import { ImageObject } from '../models/image-object';
 
 @Injectable({
   providedIn: "root"
@@ -47,5 +48,9 @@ export class StorageService {
 
   pullImageRefs(imgName) {
     return this.db.ref("pictures/" + imgName);
+  }
+
+  changeImageIndexes(imageMetadata: ImageObject[]) {
+    this.rtdb.database.ref(this.rtdbPath).set(imageMetadata);
   }
 }

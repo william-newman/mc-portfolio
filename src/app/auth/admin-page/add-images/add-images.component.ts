@@ -15,8 +15,8 @@ export class AddImagesComponent implements OnInit {
   uploadStarted: boolean = false; // File upload started
   uploadProgress: number; // File upload progress percentage
   uploadComplete: boolean = false; // File upload complete
-  imageNameListLength: number;
-  collapsed: boolean = false;
+  imageNameListLength: number; // Number of metadata objects in Firebase
+  collapsed: boolean = false; // Whether to show this module or not
 
   constructor(private storageService: StorageService) {}
 

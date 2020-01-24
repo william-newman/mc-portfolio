@@ -44,6 +44,7 @@ export class GalleryComponent implements OnInit {
   }
 
   pullImageMetadata() {
+    this.imageMetadata = [];
     this.storageService.pullImageMetadata()
     .valueChanges()
       .subscribe((pulledImageMetadata: string[]) => {
