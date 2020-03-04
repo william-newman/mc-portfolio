@@ -49,6 +49,7 @@ export class AddImagesComponent implements OnInit {
       if (image.type.match(imageRegex)) {
         image[ "index" ] = this.imageNameListLength;
         this.selectedImages.push(image);
+
         const sizeFormatted = Math.round(image.size * 0.001);
         this.size.push(sizeFormatted);
 
