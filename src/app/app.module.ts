@@ -19,6 +19,7 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
 import { environment } from "../environments/environment";
 import { AddImagesComponent } from './auth/admin-page/add-images/add-images.component';
 import { MoveImagesComponent } from './auth/admin-page/move-images/move-images.component';
+import { AdminComponent } from './auth/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MoveImagesComponent } from './auth/admin-page/move-images/move-images.c
     VersionComponent,
     AdminPageComponent,
     AddImagesComponent,
-    MoveImagesComponent
+    MoveImagesComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

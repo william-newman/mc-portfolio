@@ -1,0 +1,24 @@
+<div *ngIf="loginModal" class="login-modal">
+  <div class="login-container" (click)="loginModalHide()">
+    <div class="login-box" (click)="badTouch($event)">
+      <div class="input-box">
+        <input type="username" class="input username" />
+      </div>
+      <div class="input-box">
+        <input type="password" class="input password" />
+      </div>
+      <div class="input-box">
+        <button
+          class="better-btn"
+          (click)="tryLogin()"
+          routerLink="/administration"
+        >
+          Go to Admin Page
+        </button>
+      </div>
+      <div class="input-box">
+        <button class="better-btn" (click)="loginModalHide()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
