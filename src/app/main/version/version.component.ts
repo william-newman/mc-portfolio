@@ -7,11 +7,12 @@ import { AuthenticateService } from 'src/app/services/authenticate.service';
   styleUrls: ['./version.component.css']
 })
 export class VersionComponent implements OnInit {
-  loginModal: boolean = false;
+  loginModal = false;
   currentAppVersion: string = 'Error, please reload.';
 
   constructor(private authService: AuthenticateService) {
     this.currentAppVersion = this.authService.appVersion;
+    this.loginModal = this.authService.authModalState;
   }
 
   ngOnInit() {
@@ -19,12 +20,16 @@ export class VersionComponent implements OnInit {
 
   // Shows login modal
   loginModalShow() {
-    this.loginModal = true;
+    this.authService.displayAuthModal(true);
   }
 
   // Hides login modal
   loginModalHide() {
-    this.loginModal = false;
+    this.authService.displayAuthModal(false);
+  }
+
+  getAuthState() {
+    this.loginModal = this.authService.authModalState;
   }
 
   // Stop event propagation so that the input form cannot be clicked through
