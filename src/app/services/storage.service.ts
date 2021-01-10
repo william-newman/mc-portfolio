@@ -1,27 +1,21 @@
 import { Injectable } from "@angular/core";
-import {
-  AngularFireStorage,
-  AngularFireStorageReference,
-  AngularFireUploadTask
-} from "angularfire2/storage";
 import { Observable } from "rxjs";
-import { AngularFireDatabase } from "angularfire2/database";
 import { ImageObject } from '../models/image-object';
 
 @Injectable({
   providedIn: "root"
 })
 export class StorageService {
-  ref: AngularFireStorageReference;
-  task: AngularFireUploadTask;
+  // ref: AngularFireStorageReference;
+  // task: AngularFireUploadTask;
   uploadProgress: Observable<number>;
   imageNames = [];
   imageRefs = [];
   rtdbPath = 'imageMetadata';
 
   constructor(
-    private db: AngularFireStorage,
-    private rtdb: AngularFireDatabase
+    // private db: AngularFireStorage,
+    // private rtdb: AngularFireDatabase
   ) {}
 
   onUpload(imageList: any) {
@@ -34,23 +28,23 @@ export class StorageService {
         type: currentImage.type
       }
       
-      this.ref = this.db.ref("pictures/" + imageMetadata.name);
-      this.rtdb.database.ref(this.rtdbPath).push(imageMetadata);
-      this.task = this.ref.put(currentImage);
-      this.uploadProgress = this.task.percentageChanges();
+      // this.ref = this.db.ref("pictures/" + imageMetadata.name);
+      // this.rtdb.database.ref(this.rtdbPath).push(imageMetadata);
+      // this.task = this.ref.put(currentImage);
+      // this.uploadProgress = this.task.percentageChanges();
     }
   }
 
   pullImageMetadata() {
     const path = "/" + this.rtdbPath;
-    return this.rtdb.list(path);
+    // return this.rtdb.list(path);
   }
 
   pullImageRefs(imgName) {
-    return this.db.ref("pictures/" + imgName);
+    // return this.db.ref("pictures/" + imgName);
   }
 
   changeImageIndexes(imageMetadata: ImageObject[]) {
-    this.rtdb.database.ref(this.rtdbPath).set(imageMetadata);
+    // this.rtdb.database.ref(this.rtdbPath).set(imageMetadata);
   }
 }

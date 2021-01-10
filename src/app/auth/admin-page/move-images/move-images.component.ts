@@ -39,14 +39,14 @@ export class MoveImagesComponent implements OnInit {
   pullImageMetadata() {
     this.imageMetadata = []; // Clear the array before load and after functions
 
-    this.storageService
-      .pullImageMetadata()
-      .valueChanges()
-      .subscribe((pulledImageMetadata: any[]) => {
-        pulledImageMetadata.forEach((imageData: any) => {
-          this.imageMetadata.push(imageData);
-        });
-      });
+    // this.storageService
+    //   .pullImageMetadata()
+    //   .valueChanges()
+    //   .subscribe((pulledImageMetadata: any[]) => {
+    //     pulledImageMetadata.forEach((imageData: any) => {
+    //       this.imageMetadata.push(imageData);
+    //     });
+    //   });
   }
 
   moveUp(imageIndex: number) {

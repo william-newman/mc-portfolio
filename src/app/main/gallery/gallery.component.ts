@@ -45,33 +45,33 @@ export class GalleryComponent implements OnInit {
 
   pullImageMetadata() {
     this.imageMetadata = [];
-    this.storageService.pullImageMetadata()
-    .valueChanges()
-      .subscribe((pulledImageMetadata: string[]) => {
-        pulledImageMetadata.forEach((imageData: any) => {          
-          this.imageMetadata.push(imageData);
-        });
+    // this.storageService.pullImageMetadata()
+    // .valueChanges()
+    //   .subscribe((pulledImageMetadata: string[]) => {
+    //     pulledImageMetadata.forEach((imageData: any) => {          
+    //       this.imageMetadata.push(imageData);
+    //     });
 
-        this.imageMetadata.forEach((imgData: any) => {
-          this.pullImageRefs(imgData);
-        });
-      });
+    //     this.imageMetadata.forEach((imgData: any) => {
+    //       this.pullImageRefs(imgData);
+    //     });
+    //   });
   }
 
   pullImageRefs(imageMetadata) {
-    this.storageService.pullImageRefs(imageMetadata.name)
-    .getDownloadURL()
-    .subscribe(imgURL => {
-      this.imageRefs.push(imgURL);
+    // this.storageService.pullImageRefs(imageMetadata.name)
+    // .getDownloadURL()
+    // .subscribe(imgURL => {
+    //   this.imageRefs.push(imgURL);
 
-      this.imageArr.push({
-        index: imageMetadata.index,
-        src: imgURL,
-        alt: imageMetadata.name,
-        title: imageMetadata.name
-      });
-      this.checkImageArr();
-    });
+    //   this.imageArr.push({
+    //     index: imageMetadata.index,
+    //     src: imgURL,
+    //     alt: imageMetadata.name,
+    //     title: imageMetadata.name
+    //   });
+    //   this.checkImageArr();
+    // });
   }
 
   fullSizeImage(imgIndex: number) {

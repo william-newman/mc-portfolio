@@ -29,12 +29,12 @@ export class AddImagesComponent implements OnInit {
   }
 
   pullImageNameList() {
-    this.storageService
-      .pullImageMetadata()
-      .valueChanges()
-      .subscribe(list => {
-        this.imageNameListLength = list.length;
-      });
+    // this.storageService
+    //   .pullImageMetadata()
+    //   .valueChanges()
+    //   .subscribe(list => {
+    //     this.imageNameListLength = list.length;
+    //   });
   }
 
   onFileSelect(event: any) {
