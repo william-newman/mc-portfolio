@@ -12,10 +12,6 @@ import { SlideshowModule } from "ng-simple-slideshow";
 import { VersionComponent } from "./main/version/version.component";
 import { AdminPageComponent } from "./auth/admin-page/admin-page.component";
 import { HttpClientModule } from "@angular/common/http";
-import { AngularFireModule } from "angularfire2";
-import { AngularFireStorageModule } from 'angularfire2/storage';
-import { AngularFireAuthModule } from "angularfire2/auth";
-import { AngularFireDatabaseModule } from "angularfire2/database";
 import { environment } from "../environments/environment";
 import { AddImagesComponent } from './auth/admin-page/add-images/add-images.component';
 import { MoveImagesComponent } from './auth/admin-page/move-images/move-images.component';
@@ -39,11 +35,7 @@ import { AdminComponent } from './auth/admin/admin.component';
     BrowserModule,
     AppRoutingModule,
     SlideshowModule,
-    HttpClientModule,
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
-    AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

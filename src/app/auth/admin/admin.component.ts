@@ -8,6 +8,8 @@ import { AuthenticateService } from 'src/app/services/authenticate.service';
 })
 export class AdminComponent implements DoCheck {
   loginModal = false;
+  placeholderUsername = 'victor';
+  placeholderPassword = 'tank';
 
   constructor(private authService: AuthenticateService) {    
     this.loginModal = authService.authModalState;
@@ -20,11 +22,15 @@ export class AdminComponent implements DoCheck {
     this.loginModal = this.authService.authModalState;
   }
 
+  badTouch() {
+    // stop an error
+  }
+
   loginModalHide() {
     this.authService.displayAuthModal(false);
   }
 
   tryLogin() {
-    this.authService.checkAuthentication('victor', 'tank');
+    this.authService.checkAuthentication(this.placeholderUsername, this.placeholderPassword);
   }
 }
