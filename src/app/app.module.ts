@@ -12,7 +12,6 @@ import { SlideshowModule } from "ng-simple-slideshow";
 import { VersionComponent } from "./main/version/version.component";
 import { AdminPageComponent } from "./auth/admin-page/admin-page.component";
 import { HttpClientModule } from "@angular/common/http";
-import { environment } from "../environments/environment";
 import { AddImagesComponent } from './auth/admin-page/add-images/add-images.component';
 import { MoveImagesComponent } from './auth/admin-page/move-images/move-images.component';
 import { AdminComponent } from './auth/admin/admin.component';
